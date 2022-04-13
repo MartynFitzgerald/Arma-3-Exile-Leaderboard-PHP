@@ -11,17 +11,15 @@ $averageKillDistance = 0;
 
 if ($sql_server_stats_results->num_rows > 0) {
     if($row = $sql_server_stats_results->fetch_assoc()) {
-		$totalUsers = $row["total_users"];
-		$totalKills = $row["total_kills"];
-		$totalDeaths = $row["total_deaths"];
+		$totalUsers = number_format($row["total_users"],0);
+		$totalKills = number_format($row["total_kills"],0);
+    $totalDeaths = number_format($row["total_deaths"],0);
 		$averageK_float = $row["average_kills"];
 		$averageKillD_float = $row["average_kill_distance"];
 	}
 }
 
-$queryNumbers += 2;
-
-$averageKills = number_format($averageK_float, 0);
+$averageKills = number_format($averageK_float, 2);
 $averageKillDistance = number_format($averageKillD_float, 0);
 ?>
   <table>

@@ -6,7 +6,7 @@
 	$_STEAMAPI = "9205C3E493148B1E00835AAE010061FF";
 	try
 	{
-		$openid = new LightOpenID('http://localhost:2302/SG_Test/');
+		$openid = new LightOpenID('http://localhost:2302/SG/');
 		if(!$openid->mode)
 		{
 			if(isset($_GET['login']))
@@ -16,7 +16,7 @@
 			}
 			?>
 			<form action="?login" method="post">
-				<input type="image" src="http://cdn.steamcommunity.com/public/images/signinthroughsteam/sits_small.png">
+				<input type="image" src="pictures/sits_small.png">
 			</form>
 			<?php
 		}
@@ -33,7 +33,7 @@
 			// we only care about the unique account ID at the end of the URL.
 			$ptn = "/^http:\/\/steamcommunity\.com\/openid\/id\/(7[0-9]{15,25}+)$/";
 			preg_match($ptn, $id, $matches);
-			//echo "User is logged in (steamID: $matches[1])\n";
+			//echo "User is logged in (steamID: $mtches[1])\n";
 
 			$url = "http://api.steampowered.com/ISteamUser/GetPlayerSummaries/v0002/?key=$_STEAMAPI&steamids=$matches[1]";
 			$json_object= file_get_contents($url);
